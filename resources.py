@@ -116,12 +116,13 @@ class Chatbot():
 
 
     def user_interface(self):
+        print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
         print("Hello, and welcome to the number guesser extravaganza v1.0")
         print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-        print("Please select if you would like to play with default setting or custom settings:")
+        print("Please select if you would like to play with default setting or custom settings.")
        
         while True:
-            settings_choice: str = input("Enter a 'd' to play with default settings or a 'c' to play with custom settings")
+            settings_choice: str = input("Enter a 'd' to play with default settings or a 'c' to play with custom settings: ")
             if settings_choice not in ['c', 'd']:
                 print("Please only enter a valid choice.")
             elif settings_choice == 'c':
@@ -131,7 +132,7 @@ class Chatbot():
                 self.number_selector(1,30)
                 break
         print("-------------------------------------------")
-        print(f"The object of the game is to guess a randomly chosen number between {self.lowend} and {self.highend}. You have {self.guesses} total guesses and {self.hints} hints that you can request to help guess the number.")
+        print(f"The object of the game is to guess a randomly chosen number in the range from {self.lowend} to {self.highend}. You have {self.guesses} total guesses and {self.hints} hints that you can request to help guess the number.")
         print("-------------------------------------------")
         self.hint_list = self.hint_generator(self.hidden_number)
         while self.guesses > 0: #gameplay loop
@@ -139,12 +140,13 @@ class Chatbot():
             guess = self.user.guess_number(self.lowend, self.highend, self)
             outcome = self.guess_checker(guess, self.hidden_number)
             if outcome == True:
-                return print("Congratulations, you've guessed the correct number!!!")
+                return print("Congratulations, you've guessed the correct number!!!\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
             else:
                 print("Sorry that guess is not correct")
                 self.guesses -= 1
                 print("-------------------------------------------")
-        return print("Sorry you have run out of guesses... better luck next time!")
+        return print(f"Sorry you have run out of guesses, the hidden number was {self.hidden_number} ... better luck next time!\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+
 
 
 
